@@ -1,14 +1,10 @@
 ---
 # Display name
 title: Lynn Huang
-
 # Full name (for SEO)
 first_name: Lynn 
 last_name: Huang
 
-# Status emoji
-status:
-  icon: ☕️
 
 # Is this the primary user of the site?
 superuser: true
@@ -47,16 +43,11 @@ education:
 # For available icons, see: https://wowchemy.com/docs/getting-started/page-builder/#icons
 #   For an email link, use "fas" icon pack, "envelope" icon, and a link in the
 #   form "mailto:your-email@example.com" or "/#contact" for contact widget.
+
 social:
-  - icon: envelope
-    icon_pack: fas
-    link: '/#contact'
-  - icon: twitter
-    icon_pack: fab
-    link: https://twitter.com/LynnHuangTW
-    label: Follow me on Twitter
-    display:
-      header: true
+  # - icon: envelope
+  #   icon_pack: fas
+  #   link: '/#contact'
   - icon: graduation-cap # Alternatively, use `google-scholar` icon from `ai` icon pack
     icon_pack: fas
     link: https://scholar.google.com/citations?user=BfRjeXYAAAAJ&hl=en
@@ -66,19 +57,27 @@ social:
   - icon: linkedin
     icon_pack: fab
     link: https://www.linkedin.com/in/peilinhuang1994/
+  - icon: twitter
+    icon_pack: fab
+    link: https://twitter.com/LynnHuangTW
+    # label: Follow me on Twitter
+    # display:
+    #   header: true
   # Link to a PDF of your resume/CV.
   # To use: copy your resume to `static/uploads/resume.pdf`, enable `ai` icons in `params.yaml`,
   # and uncomment the lines below.
-  - icon: cv
-    icon_pack: ai
-    link: https://www.dropbox.com/s/1xg9q8u2xom8sph/2023%20Fall_CV_Lynn%20Huang.pdf?dl=0
+  # - icon: cv
+  #   icon_pack: ai
+  #   link: https://www.dropbox.com/s/1xg9q8u2xom8sph/2023%20Fall_CV_Lynn%20Huang.pdf?dl=0
 
-# Enter email to display Gravatar (if Gravatar enabled in Config)
-email: 'lynnhuang.peilin@gmail.com'
+  # Enter email to display Gravatar (if Gravatar enabled in Config)
+  # email: 'lynnhuang.peilin@gmail.com'
 
 # Highlight the author in author lists? (true/false)
 highlight_name: true
 ---
 
+
 Lynn Huang is a well-trained health economist from Johns Hopkins University with demonstrated experience in pharmacoeconomics and pharmacoepidemiology research. Skilled in economic modeling, machine learning, and statistical data analysis.
 {style="text-align: justify;"}
+

@@ -3,6 +3,9 @@
 # http://127.0.0.1:4321
 # install.packages("blogdown")
 # setwd("/Users/lynnhuang/Dropbox (Personal)/GitHub/lynnhuang-peilin")
+
+#https://wowchemy.com/docs/content/writing-markdown-latex/
+
 getwd
 library(blogdown)
 blogdown:::serve_site()
