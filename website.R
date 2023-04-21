@@ -21,8 +21,8 @@ blogdown:::serve_site()
 # git add .
 # git commit -m "Write a comment about it here"
 # git push -u origin master
-git remote set-url origin github.com:lynnhuang-peilin/website.git
-git remote set-url origin github.com:lynnhuang-peilin/lynnhuang-peilin.git
-git remote add origin https://github.com/lynnhuang-peilin/website.git
+# git remote set-url origin github.com:lynnhuang-peilin/website.git
+# git remote set-url origin github.com:lynnhuang-peilin/lynnhuang-peilin.git
+# git remote add origin https://github.com/lynnhuang-peilin/website.git
 
 # lynnhuangpeilin.netlify.app
