@@ -2,6 +2,7 @@
 title: Writing technical content in Markdown
 date: 2019-07-12
 draft: true
+share: false
 math: true
 image:
   placement: 2

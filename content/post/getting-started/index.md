@@ -16,6 +16,7 @@ lastmod: '2020-12-13T00:00:00Z'
 
 # Is this an unpublished draft?
 draft: true
+share: false
 
 # Show this page in the Featured widget?
 featured: false

@@ -14,6 +14,7 @@ image:
   caption: ''
   focal_point: ''
 draft: true
+share: false
 ---
 
 ```python
