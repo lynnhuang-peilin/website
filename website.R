@@ -2,7 +2,7 @@
 # https://nickopotamus.co.uk/post/hugo-website-rstudio/
 # http://127.0.0.1:4321
 # install.packages("blogdown")
-# setwd("/Users/lynnhuang/Dropbox (Personal)/GitHub/lynnhuang-peilin")
+# setwd("/Users/lynnhuang/Documents/GitHub/website")
 
 #https://wowchemy.com/docs/content/writing-markdown-latex/
 
@@ -12,7 +12,8 @@ blogdown:::serve_site()
 
 
 
-
+#To create a blog/news article:
+#hugo new  --kind post post/my-article-name
 
 
 # Now for the magic. Netlify will watch for updates to the Git repository
