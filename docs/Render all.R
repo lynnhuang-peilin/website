@@ -1,7 +1,9 @@
-rmarkdown::render("index.Rmd", output_format = "html_document")
-rmarkdown::render("ISPOR.Rmd", output_format = "html_document")
-rmarkdown::render("team.Rmd", output_format = "html_document")
-rmarkdown::render("table.Rmd", output_format = "html_document")
-rmarkdown::render("gallery.Rmd", output_format = "html_document")
-rmarkdown::render("follow.Rmd", output_format = "html_document")
+library(rmarkdown)
 
+# List all Rmd files in the folder
+rmd_files <- list.files(pattern = "\\.Rmd$")
+
+# Render each one into HTML
+for (file in rmd_files) {
+  render(input = file, output_format = "html_document")
+}

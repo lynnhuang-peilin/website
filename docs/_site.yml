@@ -1,16 +1,12 @@
 navbar:
   title: "UMB ISPOR Student Chpater"
   left:
-    - text: "ISPOR Student Network"
-      href: ISPOR.html
     - text: "About us"
       href: index.html
-    - text: "Our team"
-      href: team.html
-    - text: "Student Achievements and Publications"
-      href: table.html
-    - text: "Gallery"
-      href: gallery.html
+    - text: "Publications"
+      href: publications.html
+    - text: "CV"
+      href: https://www.dropbox.com/scl/fi/7cythq4c1b56jh1ikp3fd/2023-Fall_CV_Lynn-Huang.pdf?rlkey=zjbaqiexh6afuriu9gik8robj&st=p6yflwd0&dl=0
   right:
     - text: "Follow us"
       href: follow.html

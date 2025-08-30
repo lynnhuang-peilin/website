@@ -1,5 +1,5 @@
 ---
-title: "UMB ISPOR Student Chpater"
+title: "About me"
 navbar:
 output:
   html_document: 
@@ -16,75 +16,9 @@ library(dplyr)
 
 ```
 
-# UMB ISPOR Student Chapter
-
-## Who are we?
-
-![](headshot/group.jpg){width="100%"} 
-The UMB ISPOR Student Chapter at the University of Maryland, Baltimore (UMB) is a vibrant and dynamic community of graduate and PharmD students united by a shared passion for HEOR. As part of the global ISPOR Student Network, our chapter organizes a wide range of initiatives, including educational seminars, journal clubs, webinars, networking events, and volunteer activities, aimed at fostering interdisciplinary collaboration and leadership. With a strong tradition of excellence, our chapter has been consistently recognized as a Best Student Chapter, and several of our executive board members have earned accolades for distinguished leadership. We welcome students from all UMB schools who are passionate about contributing to the HEOR field and enhancing their professional trajectory.
-
-## What do we do?
-
-::: card-container
-::: card
-::: card-image
-<img src="events/ispor.jpg" class="card-image"/>
-:::
-
-<h3 class="card-title">
-
-Educational Events
-
-</h3>
-
-::: card-description
-Journal clubs, Coding workshops
-:::
-:::
-
-::: card
-<img src="events/fall fest.jpg" class="card-image"/>
-
-<h3 class="card-title">
-
-Campus Involvement
-
-</h3>
-
-::: card-description
-Fall Fest,Global Kick-off
-:::
-:::
-
-::: card
-::: card-image
-<img src="events/trivia night.jpg" class="card-image"/>
-:::
-
-<h3 class="card-title">
-
-Networking Opportunities
-
-</h3>
-
-::: card-description
-Quiz competition, Alumni luncheon
-:::
-:::
-
-::: card
-::: card-image
-<img src="events/luncheon.jpg" class="card-image"/>
-:::
-
-<h3 class="card-title">
-
-Career Developments
-
-</h3>
-
-::: card-description
-Career panel, P&T competition
-:::
-:::
-:::
+<p style="text-align: center;">
+  <img src="asset/img/headshot.png" width="50%">
+</p>
+Lynn (Pei-Lin) Huang is a PhD candidate in Pharmaceutical Health Services Research at the University of Maryland, Baltimore (UMB), with a specialization in pharmacoeconomics. She was born in Taipei, Taiwan, and spent over a decade in China before relocating to the United States. She holds a Bachelor’s degree in Nutrition and Health Science and a Master’s degree in Health Economics and Outcomes Research.
+Her research focuses on the generation of real-world evidence to support value-based care and reduce health disparities, with particular emphasis on individuals with cancer. She has contributed to studies in oncology, cardiovascular disease, and substance use disorder, employing advanced analytic methods across diverse data sources, including electronic health records and claims data. Drawing on experience in both academic and industry settings, she integrates a multidisciplinary perspective into her work.
+She has demonstrated strong professional leadership through service as President of the UMB ISPOR Student Chapter (2024–2025) and as the incoming Co-Chair of the Event Planning Committee for the ISPOR Student Network.

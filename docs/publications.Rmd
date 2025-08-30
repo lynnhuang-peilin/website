@@ -1,0 +1,62 @@
+---
+title: "Publications"
+navbar:
+output: 
+  html_document: 
+    css: style.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+## Setup #######################################################################
+
+# First specify the packages of interest
+packages = c("rentrez","rmarkdown", "knitr","dplyr","tidyr","tidyverse","stringr",
+             "readxl","readr","DT")
+# Now load or install&load all
+package.check <- lapply(
+  packages,
+  FUN = function(x) {
+    if (!require(x, character.only = TRUE)) {
+      install.packages(x, dependencies = TRUE)
+      library(x, character.only = TRUE)
+    }
+  }
+)
+
+## Pubmed query ################################################################
+
+output <- data.frame(author=character(),title=character(),
+                         journal=character(),date=character(),stringsAsFactors=FALSE)
+
+search_term <- paste("((","Pei-Lin Huang","[au] AND (University of Maryland [ad] OR ","University of Florida"," [ad] OR ","Johns Hopkins University"," [ad]) NOT (Cells [mh] AND animals [mh]))")
+search_results <- entrez_search(db="pubmed", term=search_term, retmax=40)
+list_id <- search_results$ids
+print(length(list_id))
+print(search_term)
+if (length(list_id)>0) {
+  for (j in (1:length(list_id))) {
+    search_summary <- entrez_summary(db="pubmed", id=list_id[j])
+    temp_sum <- search_summary[c('title', 'fulljournalname','pubdate')]
+    temp_df <- data.frame(matrix(unlist(temp_sum), ncol =3, byrow = T))
+    colnames(temp_df) <- c('title', 'journal', 'date')
+    temp_df$author <-"Pei-Lin Huang"
+    output <- rbind(output,temp_df)
+  }
+}
+
+output <- 
+  output %>% 
+  select(author, everything()) %>% 
+  arrange(author, desc(date)) %>% 
+  distinct(author, title, .keep_all = TRUE)
+
+```
+
+
+```{r, echo=FALSE}
+datatable(output)
+```
+
+
