@@ -1,5 +1,5 @@
 navbar:
-  title: "UMB ISPOR Student Chpater"
+  title: "Lynn Huang"
   left:
     - text: "About us"
       href: index.html
@@ -8,8 +8,8 @@ navbar:
     - text: "CV"
       href: https://www.dropbox.com/scl/fi/7cythq4c1b56jh1ikp3fd/2023-Fall_CV_Lynn-Huang.pdf?rlkey=zjbaqiexh6afuriu9gik8robj&st=p6yflwd0&dl=0
   right:
-    - text: "Follow us"
-      href: follow.html
+    - text: "Contact me"
+      href: contact.html
       
 output:
   html_document:
