@@ -40,21 +40,19 @@ if (length(list_id)>0) {
     search_summary <- entrez_summary(db="pubmed", id=list_id[j])
     temp_sum <- search_summary[c('title', 'fulljournalname','pubdate')]
     temp_df <- data.frame(matrix(unlist(temp_sum), ncol =3, byrow = T))
-    colnames(temp_df) <- c('title', 'journal', 'date')
-    temp_df$author <-"Pei-Lin Huang"
+    colnames(temp_df) <- c('Title', 'Journal', 'Date')
     output <- rbind(output,temp_df)
   }
 }
 
 output <- 
   output %>% 
-  select(author, everything()) %>% 
-  arrange(author, desc(date)) %>% 
-  distinct(author, title, .keep_all = TRUE)
+  arrange(desc(Date)) %>% 
+  distinct(Title, .keep_all = TRUE)
 
 ```
 
-
+_Last update: `r format(Sys.Date(), "%B %d, %Y")`_
 ```{r, echo=FALSE}
 datatable(output)
 ```
