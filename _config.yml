@@ -1,8 +1,8 @@
-title: UMB ISPOR Student Chapter
-description: News & events from the UMB ISPOR chapter
+title: Lynn Huang
+description: Personal blog
 theme: minima
-url: https://umb-ispor.github.io
-baseurl: /UMB_ISPOR
+url: https://lynnhuang-peilin.github.io
+baseurl: /website
 
 # Optional niceties (all supported on GitHub Pages)
 plugins:
