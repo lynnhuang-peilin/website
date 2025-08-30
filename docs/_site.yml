@@ -6,7 +6,7 @@ navbar:
     - text: "Publications"
       href: publications.html
     - text: "CV"
-      href: https://www.dropbox.com/scl/fi/r0ut5skclz76v61u5zeix/CV_Lynn-Huang.pdf?rlkey=tn93vmvsjdhh6t4w9ntjmq2xp&st=psoui1hi&dl=0
+      href: cv.md
   right:
     - text: "Contact me"
       href: contact.html
