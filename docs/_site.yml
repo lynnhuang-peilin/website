@@ -1,7 +1,7 @@
 navbar:
   title: "Lynn Huang"
   left:
-    - text: "About us"
+    - text: "About me"
       href: index.html
     - text: "Publications"
       href: publications.html
