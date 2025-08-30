@@ -353,7 +353,27 @@ div.desc {
 padding: 15px;
 text-align: center;
 }
-</style>
+
+.pdf-container {
+position: relative;
+width: 100%;
+height: clamp(480px, 80vh, 1200px);
+border: 1px solid #e5e7eb;
+border-radius: 12px;
+overflow: hidden;
+background: #fff;
+}
+
+.pdf-embed {
+position: absolute;
+inset: 0;
+width: 100%;
+height: 100%;
+border: 0;
+}
+@media (prefers-color-scheme: dark) {
+.pdf-container { border-color: #374151; background: #111827; }
+}</style>
 
 
 
@@ -539,7 +559,7 @@ display: none;
   <a href="publications.html">Publications</a>
 </li>
 <li>
-  <a href="https://www.dropbox.com/scl/fi/r0ut5skclz76v61u5zeix/CV_Lynn-Huang.pdf?rlkey=tn93vmvsjdhh6t4w9ntjmq2xp&amp;st=psoui1hi&amp;dl=0">CV</a>
+  <a href="cv.html">CV</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

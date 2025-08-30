@@ -6,7 +6,7 @@ navbar:
     - text: "Publications"
       href: publications.html
     - text: "CV"
-      href: cv.md
+      href: cv.html
   right:
     - text: "Contact me"
       href: contact.html

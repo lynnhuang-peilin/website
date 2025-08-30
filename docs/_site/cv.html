@@ -250,7 +250,7 @@ $(document).ready(function () {
   <a href="publications.html">Publications</a>
 </li>
 <li>
-  <a href="cv.md">CV</a>
+  <a href="cv.html">CV</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -273,8 +273,19 @@ $(document).ready(function () {
 
 <p>If the embedded PDF below does not load, you can download it <a
 href="https://www.dropbox.com/scl/fi/r0ut5skclz76v61u5zeix/CV_Lynn-Huang.pdf?rlkey=tn93vmvsjdhh6t4w9ntjmq2xp&amp;st=66xzxoxw&amp;dl=0">here</a>.</p>
-<object data="{{ &#39;/asset/pdfs/CV.pdf&#39; | relative_url }}" type="application/pdf" width="100%" height="900">
-</object>
+<div class="pdf-container">
+<object
+    class="pdf-embed"
+    data="{{ '/asset/pdfs/CV.pdf' | relative_url }}"
+    type="application/pdf"
+    aria-label="CV">
+<p>
+PDF preview unavailable.
+<a href="{{ '/asset/pdfs/CVr.pdf' | relative_url }}">Download the
+PDF</a>.
+</p>
+<p></object></p>
+</div>
 
 
 

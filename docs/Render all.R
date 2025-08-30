@@ -7,3 +7,4 @@ rmd_files <- list.files(pattern = "\\.Rmd$")
 for (file in rmd_files) {
   render(input = file, output_format = "html_document")
 }
+
