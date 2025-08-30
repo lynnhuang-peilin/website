@@ -1,0 +1,90 @@
+---
+title: "UMB ISPOR Student Chpater"
+navbar:
+output:
+  html_document: 
+    css: style.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# Load necessary libraries
+library(readr)
+library(knitr)
+library(DT)
+library(dplyr)
+
+```
+
+# UMB ISPOR Student Chapter
+
+## Who are we?
+
+![](headshot/group.jpg){width="100%"} 
+The UMB ISPOR Student Chapter at the University of Maryland, Baltimore (UMB) is a vibrant and dynamic community of graduate and PharmD students united by a shared passion for HEOR. As part of the global ISPOR Student Network, our chapter organizes a wide range of initiatives, including educational seminars, journal clubs, webinars, networking events, and volunteer activities, aimed at fostering interdisciplinary collaboration and leadership. With a strong tradition of excellence, our chapter has been consistently recognized as a Best Student Chapter, and several of our executive board members have earned accolades for distinguished leadership. We welcome students from all UMB schools who are passionate about contributing to the HEOR field and enhancing their professional trajectory.
+
+## What do we do?
+
+::: card-container
+::: card
+::: card-image
+<img src="events/ispor.jpg" class="card-image"/>
+:::
+
+<h3 class="card-title">
+
+Educational Events
+
+</h3>
+
+::: card-description
+Journal clubs, Coding workshops
+:::
+:::
+
+::: card
+<img src="events/fall fest.jpg" class="card-image"/>
+
+<h3 class="card-title">
+
+Campus Involvement
+
+</h3>
+
+::: card-description
+Fall Fest,Global Kick-off
+:::
+:::
+
+::: card
+::: card-image
+<img src="events/trivia night.jpg" class="card-image"/>
+:::
+
+<h3 class="card-title">
+
+Networking Opportunities
+
+</h3>
+
+::: card-description
+Quiz competition, Alumni luncheon
+:::
+:::
+
+::: card
+::: card-image
+<img src="events/luncheon.jpg" class="card-image"/>
+:::
+
+<h3 class="card-title">
+
+Career Developments
+
+</h3>
+
+::: card-description
+Career panel, P&T competition
+:::
+:::
+:::
