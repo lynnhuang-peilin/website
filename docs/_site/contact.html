@@ -353,10 +353,11 @@ div.desc {
 padding: 15px;
 text-align: center;
 }
+
 .pdf-container {
 position: relative;
 width: 100%;
-height: clamp(480px, 80vh, 1200px); 
+height: clamp(480px, 80vh, 1200px);
 border: 1px solid #e5e7eb;
 border-radius: 12px;
 overflow: hidden;
@@ -370,20 +371,8 @@ width: 100%;
 height: 100%;
 border: 0;
 }
-
-.pdf-fallback {
-padding: 1rem;
-font-size: 0.95rem;
-}
-
 @media (prefers-color-scheme: dark) {
 .pdf-container { border-color: #374151; background: #111827; }
-.pdf-fallback { color: #e5e7eb; }
-}
-
-@media print {
-.pdf-container { height: auto; }
-.pdf-embed { height: 100vh; }
 }</style>
 
 
@@ -593,7 +582,7 @@ display: none;
 
 <p>If you have any questions, feel free to send me an e-mail or connect
 me on LinkedIn.</p>
-<p><a href="phuang1@umaryland.edu"><button class="button">Email</button></a>
+<p><a href="mailto:phuang1@umaryland.edu"><button class="button">Email</button></a>
 <a href="https://www.linkedin.com/in/peilinhuang1994/"><button class="button">LinkedIn</button></a></p>
 
 
