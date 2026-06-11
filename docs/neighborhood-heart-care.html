@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Neighborhood Gap in Heart Care After Breast Cancer | Pei-Lin Huang</title>
+<meta name="description" content="An interactive look at new research: after breast cancer treatment that can strain the heart, where a woman lives helps determine whether — and when — she sees a heart doctor.">
+<style>
+  :root{
+    --ink:#121212; --ink-soft:#363636; --ink-faint:#727272;
+    --rule:#e2e2e2; --paper:#ffffff; --tint:#f7f5f0;
+    --accent:#a81817; --blue:#3d6a8f; --blue-light:#9bbcd6;
+    --gold:#c89c3c; --green:#4a7c59;
+    --serif:Georgia,'Times New Roman',serif;
+    --sans:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.155rem;line-height:1.7}
+  .container{max-width:620px;margin:0 auto;padding:0 20px}
+  .wide{max-width:880px;margin:0 auto;padding:0 20px}
+
+  /* ---------- header / hero ---------- */
+  .kicker{font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);text-align:center;margin-bottom:18px}
+  .hero{padding:72px 0 40px;border-bottom:1px solid var(--rule)}
+  h1{font-size:clamp(2.1rem,5.5vw,3.4rem);font-weight:700;line-height:1.12;text-align:center;letter-spacing:-.01em;max-width:800px;margin:0 auto}
+  .deck{font-size:clamp(1.1rem,2.4vw,1.35rem);font-style:italic;color:var(--ink-soft);text-align:center;max-width:640px;margin:22px auto 0;line-height:1.5}
+  .byline{font-family:var(--sans);font-size:.85rem;color:var(--ink-faint);text-align:center;margin-top:28px}
+  .byline b{color:var(--ink);font-weight:700}
+  .hero-note{font-family:var(--sans);font-size:.74rem;color:var(--ink-faint);text-align:center;margin-top:10px}
+
+  /* ---------- prose ---------- */
+  .prose{padding:46px 0}
+  .prose p{margin-bottom:1.5em}
+  .prose p:first-child::first-letter{font-size:3.4em;font-weight:700;float:left;line-height:.82;padding:6px 10px 0 0}
+  h2.section{font-size:1.65rem;font-weight:700;line-height:1.25;margin:.4em 0 1em;text-align:center}
+  .section-label{font-family:var(--sans);font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);text-align:center;margin-bottom:10px}
+  .divider{text-align:center;color:var(--ink-faint);letter-spacing:.6em;padding:8px 0 40px;font-size:1rem}
+  a{color:var(--blue)}
+  .smallcaps{font-variant:small-caps;letter-spacing:.04em}
+
+  /* ---------- pull stats ---------- */
+  .bigstat-row{display:flex;flex-wrap:wrap;gap:28px;justify-content:center;margin:36px 0}
+  .bigstat{text-align:center;min-width:150px;flex:1}
+  .bigstat .num{font-size:3.2rem;font-weight:700;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+  .bigstat .lbl{font-family:var(--sans);font-size:.8rem;color:var(--ink-soft);margin-top:8px;line-height:1.45}
+  .pullquote{border-top:3px solid var(--ink);border-bottom:1px solid var(--rule);padding:26px 8px;margin:44px 0;font-size:1.5rem;line-height:1.4;font-weight:700;text-align:center}
+  .pullquote .attr{display:block;font-family:var(--sans);font-size:.78rem;font-weight:400;color:var(--ink-faint);margin-top:14px;text-transform:uppercase;letter-spacing:.1em}
+
+  /* ---------- figure shells ---------- */
+  figure.viz{margin:52px auto;padding:28px 22px 18px;background:var(--tint);border-top:3px solid var(--ink)}
+  figure.viz h3{font-family:var(--sans);font-size:1.02rem;font-weight:700;margin-bottom:4px}
+  figure.viz .sub{font-family:var(--sans);font-size:.82rem;color:var(--ink-faint);margin-bottom:20px}
+  figcaption{font-family:var(--sans);font-size:.72rem;color:var(--ink-faint);margin-top:16px;border-top:1px solid var(--rule);padding-top:10px;line-height:1.5}
+
+  /* ---------- waffle (38%) ---------- */
+  .waffle{display:grid;grid-template-columns:repeat(10,1fr);gap:7px;max-width:420px;margin:0 auto}
+  .waffle .cell{aspect-ratio:1/1;border-radius:50%;background:#d9d4c9;transition:background .5s, transform .5s;transform:scale(.6)}
+  .waffle .cell.on{background:var(--accent);transform:scale(1)}
+  .waffle .cell.shown{transform:scale(1)}
+  .waffle-legend{display:flex;gap:22px;justify-content:center;margin-top:16px;font-family:var(--sans);font-size:.78rem;color:var(--ink-soft)}
+  .dotkey{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+
+  /* ---------- vignettes ---------- */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:34px 0}
+  @media(max-width:640px){.cards{grid-template-columns:1fr}}
+  .card{background:var(--paper);border:1px solid var(--rule);border-top:4px solid var(--blue);padding:22px}
+  .card.alt{border-top-color:var(--gold)}
+  .card .avatar{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:700;font-size:1.2rem;color:#fff;background:var(--blue);margin-bottom:12px}
+  .card.alt .avatar{background:var(--gold)}
+  .card h4{font-family:var(--sans);font-size:1rem;margin-bottom:2px}
+  .card .tag{font-family:var(--sans);font-size:.72rem;color:var(--ink-faint);margin-bottom:12px}
+  .card p{font-size:.95rem;line-height:1.6;margin-bottom:10px}
+  .card .outcome{font-family:var(--sans);font-size:.8rem;font-weight:700;padding-top:10px;border-top:1px dashed var(--rule)}
+  .card .outcome.good{color:var(--green)} .card .outcome.bad{color:var(--accent)}
+  .fictional{font-family:var(--sans);font-size:.7rem;color:var(--ink-faint);text-align:center;margin-top:-6px}
+
+  /* ---------- scrolly reveal ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.vis{opacity:1;transform:none}
+
+  /* ---------- odds-ratio chart ---------- */
+  .orchart{font-family:var(--sans)}
+  .orrow{display:grid;grid-template-columns:170px 1fr;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule);cursor:pointer}
+  .orrow:last-of-type{border-bottom:none}
+  .orrow .lab{font-size:.8rem;line-height:1.35;color:var(--ink-soft)}
+  .orrow .lab b{display:block;color:var(--ink)}
+  .ortrack{position:relative;height:38px}
+  .ortrack .axisline{position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--ink);opacity:.7}
+  .orbar{position:absolute;top:8px;height:22px;border-radius:3px;transition:width .9s cubic-bezier(.2,.7,.3,1)}
+  .orbar.lower{right:50%;background:var(--accent)}
+  .orbar.higher{left:50%;background:var(--green)}
+  .orval{position:absolute;top:11px;font-size:.72rem;font-weight:700;white-space:nowrap}
+  .ortip{display:none;grid-column:1/-1;background:#fff;border:1px solid var(--rule);border-left:4px solid var(--accent);padding:12px 14px;font-size:.82rem;line-height:1.55;color:var(--ink-soft);margin:4px 0 8px}
+  .orrow.open + .ortip{display:block}
+  .oraxis{display:grid;grid-template-columns:170px 1fr;gap:12px;font-size:.68rem;color:var(--ink-faint);margin-bottom:4px}
+  .oraxis .scalelabs{display:flex;justify-content:space-between}
+  .orhint{font-size:.72rem;color:var(--ink-faint);text-align:center;margin-top:10px}
+
+  /* ---------- timeline ---------- */
+  .timeline{font-family:var(--sans);margin-top:8px}
+  .tl-row{margin:18px 0}
+  .tl-row .who{font-size:.8rem;font-weight:700;margin-bottom:6px}
+  .tl-track{position:relative;height:30px;background:#e9e5db;border-radius:4px;overflow:hidden}
+  .tl-fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:4px;transition:width 1.6s cubic-bezier(.2,.7,.3,1);display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:#fff;font-size:.75rem;font-weight:700;white-space:nowrap}
+  .tl-fill.pcp{background:var(--blue)} .tl-fill.cardio{background:var(--accent)}
+  .tl-scale{display:flex;justify-content:space-between;font-size:.68rem;color:var(--ink-faint);margin-top:4px}
+  .tl-marker{position:absolute;top:-6px;bottom:-6px;width:2px;background:var(--ink);opacity:.6}
+  .tl-marker span{position:absolute;top:-16px;left:-22px;font-size:.65rem;color:var(--ink);width:60px}
+
+  /* ---------- two neighborhoods toggle ---------- */
+  .nbhd{font-family:var(--sans)}
+  .nbhd .controls{display:grid;gap:10px;margin:18px 0 24px}
+  .switchrow{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--rule);padding:12px 14px;gap:12px}
+  .switchrow .desc{font-size:.84rem;line-height:1.4}
+  .switchrow .desc b{display:block;font-size:.88rem}
+  .switch{position:relative;width:52px;height:28px;flex:none;cursor:pointer}
+  .switch input{opacity:0;width:0;height:0}
+  .slider{position:absolute;inset:0;background:#cfc9bd;border-radius:28px;transition:.25s}
+  .slider:before{content:"";position:absolute;width:22px;height:22px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.25s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+  .switch input:checked + .slider{background:var(--accent)}
+  .switch input:checked + .slider:before{transform:translateX(24px)}
+  .nbhd-result{background:#fff;border:1px solid var(--rule);padding:18px}
+  .nbhd-result .head{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:10px}
+  .gaugewrap{height:30px;background:#e9e5db;border-radius:4px;position:relative;overflow:hidden}
+  .gaugefill{position:absolute;left:0;top:0;bottom:0;background:var(--blue);border-radius:4px;transition:width .7s cubic-bezier(.2,.7,.3,1),background .7s;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:#fff;font-weight:700;font-size:.8rem}
+  .nbhd-note{font-size:.82rem;color:var(--ink-soft);margin-top:12px;line-height:1.55;min-height:3em}
+  .ref-line{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--ink);opacity:.55}
+
+  /* ---------- quiz ---------- */
+  .quiz{font-family:var(--sans)}
+  .quiz .q{background:#fff;border:1px solid var(--rule);padding:18px;margin-bottom:14px}
+  .quiz .q p{font-size:.92rem;font-weight:700;margin-bottom:12px}
+  .quiz .opts{display:flex;gap:10px;flex-wrap:wrap}
+  .quiz button.opt{font-family:var(--sans);font-size:.85rem;padding:9px 18px;border:1.5px solid var(--ink);background:#fff;border-radius:24px;cursor:pointer;transition:.15s}
+  .quiz button.opt:hover{background:var(--tint)}
+  .quiz button.opt.sel{background:var(--ink);color:#fff}
+  .quiz-result{display:none;border-top:4px solid var(--blue);background:#fff;border:1px solid var(--rule);border-top:4px solid var(--blue);padding:20px;margin-top:6px}
+  .quiz-result h4{font-size:1rem;margin-bottom:10px}
+  .quiz-result ul{margin:10px 0 0 18px}
+  .quiz-result li{font-size:.88rem;line-height:1.55;margin-bottom:9px}
+  .quiz-result .note{font-size:.75rem;color:var(--ink-faint);margin-top:14px;border-top:1px solid var(--rule);padding-top:10px}
+
+  /* ---------- action / checklist ---------- */
+  .checklist{counter-reset:item;margin:26px 0}
+  .checklist .item{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--rule)}
+  .checklist .n{counter-increment:item;flex:none;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;font-family:var(--sans);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+  .checklist .n::before{content:counter(item)}
+  .checklist .txt{font-size:1rem;line-height:1.55}
+  .checklist .txt b{display:block}
+  .checklist .txt span{font-size:.9rem;color:var(--ink-soft)}
+
+  .disclaimer{font-family:var(--sans);font-size:.75rem;color:var(--ink-faint);background:var(--tint);border:1px solid var(--rule);padding:14px 16px;line-height:1.6;margin:34px 0}
+
+  /* ---------- cohort profile (Table 1) ---------- */
+  .statstrip{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--rule);background:#fff;margin-bottom:22px}
+  .statstrip .cellst{flex:1;min-width:130px;padding:14px 10px;text-align:center;border-right:1px solid var(--rule)}
+  .statstrip .cellst:last-child{border-right:none}
+  .statstrip .v{font-family:var(--serif);font-size:1.5rem;font-weight:700}
+  .statstrip .k{font-family:var(--sans);font-size:.68rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.07em;margin-top:3px;line-height:1.4}
+  .condchart{font-family:var(--sans);margin-top:6px}
+  .condrow{display:grid;grid-template-columns:178px 1fr 52px;align-items:center;gap:10px;margin:7px 0}
+  .condrow .clab{font-size:.78rem;color:var(--ink-soft);text-align:right;line-height:1.25}
+  .condrow .ctrack{height:16px;background:#e9e5db;border-radius:3px;overflow:hidden}
+  .condrow .cfill{height:100%;width:0;background:var(--blue);border-radius:3px;transition:width 1.1s cubic-bezier(.2,.7,.3,1)}
+  .condrow .cv{font-size:.75rem;font-weight:700;font-variant-numeric:tabular-nums}
+  @media(max-width:560px){.condrow{grid-template-columns:120px 1fr 46px}.condrow .clab{font-size:.7rem}}
+
+  /* ---------- dumbbell (visited vs not, Table 1) ---------- */
+  .dumb{font-family:var(--sans)}
+  .dumbrow{display:grid;grid-template-columns:178px 1fr;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--rule)}
+  .dumbrow:last-of-type{border-bottom:none}
+  .dumbrow .dlab{font-size:.78rem;color:var(--ink-soft);text-align:right;line-height:1.25}
+  .dumbrow .dlab .ns{color:var(--ink-faint);font-size:.66rem}
+  .dtrack{position:relative;height:26px}
+  .dline{position:absolute;top:12px;height:3px;background:#d8d2c6;transition:all 1s}
+  .dline.up{background:var(--accent);opacity:.35}
+  .ddot{position:absolute;top:5px;width:17px;height:17px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.15);transition:left 1s cubic-bezier(.2,.7,.3,1)}
+  .ddot.no{background:#b9b2a4}
+  .ddot.yes{background:var(--accent)}
+  .ddot span{position:absolute;top:-15px;left:50%;transform:translateX(-50%);font-size:.62rem;font-weight:700;color:var(--ink-soft);white-space:nowrap}
+  .dumb-legend{display:flex;gap:20px;justify-content:center;margin:2px 0 14px;font-size:.76rem;color:var(--ink-soft)}
+  @media(max-width:560px){.dumbrow{grid-template-columns:110px 1fr}.dumbrow .dlab{font-size:.68rem}}
+
+  /* ---------- forest plot tabs ---------- */
+  .tabs{display:flex;gap:8px;margin-bottom:16px;font-family:var(--sans)}
+  .tabs button{flex:1;font-family:var(--sans);font-size:.82rem;font-weight:700;padding:10px 8px;border:1.5px solid var(--ink);background:#fff;cursor:pointer;transition:.15s}
+  .tabs button.on{background:var(--ink);color:#fff}
+  .forest-note{font-family:var(--sans);font-size:.74rem;color:var(--ink-faint);margin-bottom:12px;line-height:1.5}
+  .orrow .lab .contrast{display:block;font-size:.66rem;color:var(--ink-faint)}
+  .orrow.ns .orbar{background:#b9b2a4}
+  .orrow.ns .orval{color:var(--ink-faint);font-weight:400}
+  .domain-head{font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);padding:14px 0 4px;border-bottom:1px solid var(--rule)}
+
+  /* ---------- empirical domains mini-table ---------- */
+  table.domains{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:.8rem;margin:20px 0}
+  table.domains th{font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);font-weight:700;text-align:left;padding:8px 6px;border-bottom:2px solid var(--ink)}
+  table.domains td{padding:9px 6px;border-bottom:1px solid var(--rule);vertical-align:top}
+  table.domains td.est{font-variant-numeric:tabular-nums;white-space:nowrap}
+  table.domains tr.sig td{background:#fdf0ef}
+  table.domains .sigtag{display:inline-block;font-size:.62rem;font-weight:700;color:#fff;background:var(--accent);border-radius:3px;padding:1px 6px;margin-left:6px;vertical-align:1px}
+
+  /* ---------- icon cards & step flow ---------- */
+  .stepflow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;gap:6px;margin:30px 0;font-family:var(--sans)}
+  @media(max-width:640px){.stepflow{grid-template-columns:1fr;gap:2px}.steparrow{transform:rotate(90deg);margin:-2px auto}}
+  .step{background:#fff;border:1px solid var(--rule);border-top:4px solid var(--blue);padding:18px 14px;text-align:center}
+  .step .ic{color:var(--blue);margin-bottom:10px}
+  .step b{display:block;font-size:.88rem;margin-bottom:6px}
+  .step span{font-size:.78rem;color:var(--ink-soft);line-height:1.45}
+  .steparrow{display:flex;align-items:center;color:var(--ink-faint);font-size:1.4rem}
+  .iconrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin:26px 0;font-family:var(--sans)}
+  .icard{background:#fff;border:1px solid var(--rule);padding:18px 14px;text-align:center}
+  .icard .ic{color:var(--accent);margin-bottom:10px}
+  .icard.blue .ic{color:var(--blue)} .icard.green .ic{color:var(--green)} .icard.gold .ic{color:var(--gold)}
+  .icard b{display:block;font-size:.86rem;margin-bottom:5px;line-height:1.3}
+  .icard span{font-size:.76rem;color:var(--ink-soft);line-height:1.45}
+  .statcallout{display:flex;align-items:center;gap:18px;background:var(--tint);border-left:5px solid var(--accent);padding:18px 20px;margin:28px 0;font-family:var(--sans)}
+  .statcallout .ic{color:var(--accent);flex:none}
+  .statcallout p{font-size:.95rem;line-height:1.5;margin:0}
+  .statcallout p b{font-size:1.05rem}
+  .lede{font-size:1.15rem}
+
+  /* ---------- can / can't say ---------- */
+  .limits{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:26px 0;font-family:var(--sans)}
+  @media(max-width:640px){.limits{grid-template-columns:1fr}}
+  .limcol{border:1px solid var(--rule);background:#fff}
+  .limcol h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;padding:12px 16px;border-bottom:1px solid var(--rule)}
+  .limcol.can h4{color:var(--green)} .limcol.cant h4{color:var(--accent)}
+  .limcol ul{list-style:none;padding:10px 16px 14px}
+  .limcol li{font-size:.82rem;line-height:1.5;padding:7px 0 7px 26px;position:relative;color:var(--ink-soft)}
+  .limcol li::before{position:absolute;left:0;top:7px;font-weight:700}
+  .limcol.can li::before{content:"✓";color:var(--green)}
+  .limcol.cant li::before{content:"✕";color:var(--accent)}
+
+  /* ---------- factor cluster chips ---------- */
+  .clusterbox{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:26px 0;font-family:var(--sans)}
+  @media(max-width:640px){.clusterbox{grid-template-columns:1fr}}
+  .cluster{border:1px solid var(--rule);background:#fff;padding:16px}
+  .cluster h4{font-size:.85rem;margin-bottom:4px}
+  .cluster .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .cluster .chip{font-size:.7rem;background:var(--tint);border:1px solid var(--rule);border-radius:20px;padding:4px 10px;color:var(--ink-soft)}
+  .cluster.hot{border-top:4px solid var(--accent)} .cluster.cool{border-top:4px solid var(--blue)}
+  .cluster .verdict{font-size:.74rem;font-weight:700;margin-top:12px;padding-top:10px;border-top:1px dashed var(--rule)}
+  .cluster.hot .verdict{color:var(--accent)} .cluster.cool .verdict{color:var(--ink-faint)}
+
+  /* ---------- download card ---------- */
+  .dlcard{display:flex;align-items:center;gap:20px;background:var(--ink);color:#fff;padding:26px 24px;margin:40px 0;font-family:var(--sans);flex-wrap:wrap}
+  .dlcard .ic{flex:none;color:#fff}
+  .dlcard .txt{flex:1;min-width:220px}
+  .dlcard b{display:block;font-family:var(--serif);font-size:1.25rem;margin-bottom:4px}
+  .dlcard span{font-size:.82rem;opacity:.85;line-height:1.5}
+  .dlbtn{flex:none;display:inline-block;background:#fff;color:var(--ink);font-weight:700;font-size:.88rem;padding:13px 26px;text-decoration:none;border-radius:3px;transition:.15s}
+  .dlbtn:hover{background:var(--gold);color:#fff}
+
+  /* ---------- footer ---------- */
+  footer{border-top:3px solid var(--ink);margin-top:60px;padding:34px 0 70px;font-family:var(--sans);font-size:.8rem;color:var(--ink-soft);line-height:1.7}
+  footer h5{font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-faint);margin-bottom:8px}
+  .topbar{font-family:var(--sans);font-size:.74rem;letter-spacing:.06em;border-bottom:1px solid var(--rule);padding:12px 0;text-align:center}
+  .topbar a{color:var(--ink);text-decoration:none}
+  @media(max-width:560px){.orrow{grid-template-columns:1fr}.oraxis{grid-template-columns:1fr}.oraxis .axpad{display:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><a href="index.html">&larr; PEI-LIN HUANG</a> &nbsp;&middot;&nbsp; RESEARCH STORY</div>
+
+<header class="hero">
+  <div class="wide">
+    <div class="kicker">Research, Explained &middot; Cardio-Oncology</div>
+    <h1>Beating Cancer Is Step One.<br>Seeing a Heart Doctor Shouldn&rsquo;t Depend on Your ZIP Code.</h1>
+    <p class="deck">Some life-saving breast cancer treatments can quietly strain the heart. Our new study of 2,637 older women found that the neighborhood a patient lives in helps determine whether &mdash; and how soon &mdash; she gets the follow-up heart care she may need.</p>
+    <p class="byline">By <b>Pei-Lin Huang</b>, with Manu M. Mysore, Brian Barr and Eberechukwu Onukwugha<br>University of Maryland, Baltimore</p>
+    <p class="hero-note">Published in <i>Clinical Breast Cancer</i>, February 2026 &middot; A plain-language, interactive summary</p>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ THE PARADOX ============ -->
+<section class="prose container">
+  <p class="lede">Breast cancer treatment works &mdash; survival keeps improving. But three of the most effective treatments can quietly strain the heart. Doctors call it <b>cardiotoxicity</b>. It is treatable, and often preventable, <i>if someone is watching</i>.</p>
+
+  <div class="stepflow reveal">
+    <div class="step">
+      <div class="ic"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5 3.5 13.5a4.95 4.95 0 1 1 7-7l7 7a4.95 4.95 0 1 1-7 7Z"/><path d="m8.5 8.5 7 7"/></svg></div>
+      <b>Treatment begins</b>
+      <span>Anthracycline chemo, HER2-targeted drugs, or radiation near the chest &mdash; all proven against cancer</span>
+    </div>
+    <div class="steparrow">&rarr;</div>
+    <div class="step" style="border-top-color:var(--accent)">
+      <div class="ic" style="color:var(--accent)"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8Z"/><polyline points="7 12 9.5 12 11 9.5 13 14.5 14.5 12 17 12"/></svg></div>
+      <b>The heart feels it</b>
+      <span>These treatments can weaken the heart muscle &mdash; often silently at first</span>
+    </div>
+    <div class="steparrow">&rarr;</div>
+    <div class="step" style="border-top-color:var(--green)">
+      <div class="ic" style="color:var(--green)"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6 6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6 6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></svg></div>
+      <b>Watching works</b>
+      <span>Caught early by a cardiologist, heart strain can usually be managed or reversed</span>
+    </div>
+  </div>
+
+  <div class="statcallout reveal">
+    <div class="ic"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg></div>
+    <p><b>Heart disease &mdash; not cancer &mdash; is the No. 1 cause of death among breast cancer survivors.</b><br>That&rsquo;s why a new field, cardio-oncology, exists: heart doctors and cancer doctors working together.</p>
+  </div>
+
+  <p>So we asked a simple question: after starting one of these treatments, do older women actually get in to see a doctor who can watch their heart? And does it matter <i>where they live</i>?</p>
+</section>
+
+<!-- ============ WHO WAS IN THE STUDY (Table 1) ============ -->
+<section class="container">
+  <figure class="viz reveal" id="cohortViz">
+    <h3>Who was in the study</h3>
+    <div class="sub">2,637 women, drawn from national cancer-registry data linked to their Medicare claims</div>
+    <div class="statstrip">
+      <div class="cellst"><div class="v">2,637</div><div class="k">women studied</div></div>
+      <div class="cellst"><div class="v">73.5</div><div class="k">average age</div></div>
+      <div class="cellst"><div class="v">61%</div><div class="k">localized cancer<br>(33% regional, 5% distant)</div></div>
+      <div class="cellst"><div class="v">2007&ndash;18</div><div class="k">diagnosis years</div></div>
+    </div>
+    <div class="sub" style="margin-bottom:10px"><b style="color:var(--ink)">These hearts were already carrying a load before cancer treatment began:</b></div>
+    <div class="condchart" id="condChart"></div>
+    <figcaption>Baseline conditions measured in the 12 months before treatment (Table 1 of the study). 87% of the women were White and 8% were Black, reflecting the Medicare population in SEER registry areas. By clinical criteria alone, most of these women would warrant closer heart monitoring during treatment.</figcaption>
+  </figure>
+</section>
+
+<div class="divider">&bull;&nbsp;&bull;&nbsp;&bull;</div>
+
+<!-- ============ MEET THE PATIENTS ============ -->
+<section class="container reveal">
+  <div class="section-label">Two Women, One Diagnosis</div>
+  <h2 class="section">Same cancer. Same treatment. Different neighborhoods.</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="avatar">M</div>
+      <h4>&ldquo;Margaret,&rdquo; 73</h4>
+      <div class="tag">Lives near a grocery store and several clinics</div>
+      <p>Diagnosed with breast cancer, Margaret starts a HER2-targeted drug. Her oncologist refers her to a cardiologist, who checks her heart within two months and adjusts her blood-pressure medication.</p>
+      <p class="outcome good">&#10003; Heart monitored early &mdash; problems can be caught while they are still reversible</p>
+    </div>
+    <div class="card alt">
+      <div class="avatar">R</div>
+      <h4>&ldquo;Ruth,&rdquo; 74</h4>
+      <div class="tag">Lives in a food desert &amp; doctor-shortage area</div>
+      <p>Ruth starts the same drug. The nearest cardiologist is over an hour away by two buses. Her area has too few primary care doctors. Months pass. Her mild shortness of breath goes unchecked.</p>
+      <p class="outcome bad">&#10007; In our study, women in areas like Ruth&rsquo;s had 22&ndash;34% lower odds of an early heart-doctor visit</p>
+    </div>
+  </div>
+  <p class="fictional">Margaret and Ruth are fictional, composite illustrations &mdash; not real patients. The statistics are real.</p>
+</section>
+
+<!-- ============ HEADLINE FINDING: WAFFLE ============ -->
+<section class="container">
+  <figure class="viz reveal" id="waffleViz">
+    <h3>Only about 4 in 10 saw a heart doctor within 90 days</h3>
+    <div class="sub">Each dot is one of 100 women who started heart-straining cancer treatment</div>
+    <div class="waffle" id="waffle" role="img" aria-label="Waffle chart: 38 of 100 dots highlighted, representing the 38.1 percent of patients who saw a cardiologist within 90 days"></div>
+    <div class="waffle-legend">
+      <span><span class="dotkey" style="background:var(--accent)"></span>Saw a cardiologist within 90 days (38.1%)</span>
+      <span><span class="dotkey" style="background:#d9d4c9"></span>Did not (61.9%)</span>
+    </div>
+    <figcaption>Among 2,637 women aged 66+ who began potentially cardiotoxic breast cancer treatment, 2007&ndash;2018 (SEER-Medicare data). More than half had elevated cardiovascular risk at baseline &mdash; nearly 90% had high blood pressure and 1 in 3 had congestive heart failure.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <p>This number alone surprised us. These were not low-risk patients: nearly all had high blood pressure, a third had heart failure, and 7 in 10 were already taking heart medications when their cancer treatment began. By European cardiology society standards, most would warrant a cardio-oncology referral. Yet fewer than half saw a cardiologist in the critical first three months.</p>
+    <p>So who <i>did</i> get in the door? Comparing the 799 women who saw a cardiologist early with the 1,838 who didn&rsquo;t reveals a clear pattern: the system responds to what&rsquo;s already in the medical chart.</p>
+  </div>
+
+  <figure class="viz dumb reveal" id="dumbViz">
+    <h3>The sicker the heart, the more likely the visit</h3>
+    <div class="sub">Share of women with each condition, comparing those who saw a cardiologist within 90 days with those who didn&rsquo;t</div>
+    <div class="dumb-legend">
+      <span><span class="dotkey" style="background:var(--accent)"></span>Saw a cardiologist early (n=799)</span>
+      <span><span class="dotkey" style="background:#b9b2a4"></span>Did not (n=1,838)</span>
+    </div>
+    <div id="dumbRows"></div>
+    <figcaption>From Table 1 of the study. All gaps shown are statistically significant (P &lt; .05) except smoking, where the two groups were nearly identical (39.8% vs. 40.5%) &mdash; a hint that behavioral risk factors weren&rsquo;t driving referrals the way diagnosed conditions were. Women on HER2-targeted drugs &mdash; which carry formal heart-monitoring guidelines &mdash; were also far more likely to be seen: 17.4% of the early-visit group was HER2+/HR+, versus 7.2% of the others.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <p>In one sense, that is the system working: medical need predicts specialist care, and the women on HER2-targeted therapies &mdash; drugs with explicit heart-checkup guidelines &mdash; were several times more likely to see a cardiologist. But medical need is only half the story. When we looked at <i>where</i> the women lived &mdash; using their census tract, a neighborhood-sized area defined by the U.S. Census &mdash; the picture sharpened.</p>
+  </div>
+</section>
+
+<!-- ============ TWO NEIGHBORHOODS INTERACTIVE ============ -->
+<section class="container">
+  <figure class="viz nbhd reveal">
+    <h3>Build a neighborhood, see the difference</h3>
+    <div class="sub">Flip the switches to change where our hypothetical patient lives. The bar shows her odds of seeing a cardiologist within 90 days, relative to a well-resourced neighborhood.</div>
+    <div class="controls">
+      <div class="switchrow">
+        <div class="desc"><b>Low food access (&ldquo;food desert&rdquo;)</b>No supermarket within walking or easy driving distance</div>
+        <label class="switch"><input type="checkbox" id="swFood"><span class="slider"></span></label>
+      </div>
+      <div class="switchrow">
+        <div class="desc"><b>Primary care shortage area</b>Federally designated: too few family doctors for the population</div>
+        <label class="switch"><input type="checkbox" id="swHPSA"><span class="slider"></span></label>
+      </div>
+    </div>
+    <div class="nbhd-result">
+      <div class="head">Relative odds of an early cardiologist visit</div>
+      <div class="gaugewrap">
+        <div class="ref-line" style="left:88%"></div>
+        <div class="gaugefill" id="gauge" style="width:88%">100%</div>
+      </div>
+      <div class="tl-scale"><span>0</span><span style="margin-left:auto;margin-right:6%">well-resourced neighborhood = 100%</span></div>
+      <p class="nbhd-note" id="nbhdNote">This patient lives in a neighborhood with good food access and enough primary care doctors. This is the study&rsquo;s reference point.</p>
+    </div>
+    <figcaption>Based on adjusted odds ratios from the study: low food access aOR 0.78 (95% CI 0.63&ndash;0.96); primary care shortage area aOR 0.66 (95% CI 0.52&ndash;0.84). Combined display multiplies the two for illustration; the study estimated each effect while holding other factors constant. Odds ratios are not exact percentages of risk, but convey direction and rough size.</figcaption>
+  </figure>
+</section>
+
+<!-- ============ PULL QUOTE ============ -->
+<section class="container reveal">
+  <div class="pullquote">&ldquo;The same two things that make it hard to eat well &mdash; no grocery store, no nearby doctor &mdash; also predicted who got follow-up heart care.&rdquo;<span class="attr">What the data showed</span></div>
+</section>
+
+<!-- ============ ODDS RATIO EXPLORER ============ -->
+<section class="container">
+  <figure class="viz orchart reveal" id="orViz">
+    <h3>We tested 18 neighborhood factors. Here&rsquo;s every one of them.</h3>
+    <div class="sub">Tap or click any bar for the plain-language version. Bars left of the line mean <i>lower</i> odds of a timely visit; right means <i>higher</i>. Solid color = statistically significant; gray = could be chance.</div>
+    <div class="tabs" role="tablist">
+      <button class="on" id="tabCardio" role="tab" aria-selected="true">Seeing a cardiologist</button>
+      <button id="tabPCP" role="tab" aria-selected="false">Seeing a primary care doctor</button>
+    </div>
+    <p class="forest-note" id="forestNote"></p>
+    <div class="oraxis"><span class="axpad"></span><span class="scalelabs"><span>&larr; lower odds</span><span>no effect</span><span>higher odds &rarr;</span></span></div>
+    <div id="orRows"></div>
+    <p class="orhint">Estimates are adjusted for age, race, cancer stage, other illnesses and more &mdash; so the neighborhood effects aren&rsquo;t just standing in for sicker patients.</p>
+    <figcaption>Adjusted odds ratios from Tables 2 and 3 of the study (logistic regression; outcome = visit within 90 days of starting treatment). For variables measured in quartiles, the bar shows the least-favorable vs. most-favorable tract comparison; incarceration shows medium vs. low, where the notable result occurred. CI = 95% confidence interval; when it crosses 1.0 the result is not statistically significant.</figcaption>
+  </figure>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section class="container">
+  <div class="prose">
+    <p>Odds tell you <i>whether</i> a visit happened. We also measured <i>how long</i> women waited. The gap between primary care and heart care was striking.</p>
+  </div>
+  <figure class="viz timeline reveal" id="tlViz">
+    <h3>The waiting game</h3>
+    <div class="sub">Median days from start of heart-straining treatment to first visit</div>
+    <div class="tl-row">
+      <div class="who">First visit to a primary care doctor</div>
+      <div class="tl-track"><div class="tl-fill pcp" data-w="13%" >39 days</div></div>
+    </div>
+    <div class="tl-row">
+      <div class="who">First visit to a cardiologist</div>
+      <div class="tl-track" style="position:relative">
+        <div class="tl-marker" style="left:30%"><span>90-day guideline window</span></div>
+        <div class="tl-fill cardio" data-w="49.3%">148 days</div>
+      </div>
+      <div class="tl-scale"><span>0</span><span>100 days</span><span>200</span><span>300</span></div>
+    </div>
+    <figcaption>Median time to first visit: 39 days for primary care (interquartile range 91), 148 days for cardiology (interquartile range 514) &mdash; meaning half of women waited nearly five months or longer to see a heart specialist. And in neighborhoods scoring high on &ldquo;poor community infrastructure and inequity,&rdquo; that wait stretched longer still (adjusted hazard ratio 0.90, 95% CI 0.81&ndash;0.99).</figcaption>
+  </figure>
+</section>
+
+<!-- ============ EFA / WHAT IS INFRASTRUCTURE ============ -->
+<section class="prose container reveal">
+  <div class="section-label">Going Deeper</div>
+  <h2 class="section">It&rsquo;s not one thing. It&rsquo;s the neighborhood as a whole.</h2>
+  <p>Neighborhood disadvantages travel in packs &mdash; a place with no supermarket often also has fewer doctors, older housing and less transit. So we let the data group our 18 factors into clusters (a technique called factor analysis). Two emerged:</p>
+
+  <div class="clusterbox reveal">
+    <div class="cluster cool">
+      <div class="ic" style="color:var(--blue);margin-bottom:8px"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></div>
+      <h4>Cluster 1: Socioeconomic vulnerability &amp; barriers to resources</h4>
+      <div class="chips"><span class="chip">poverty</span><span class="chip">education gaps</span><span class="chip">no insurance</span><span class="chip">unemployment</span><span class="chip">food stamps</span><span class="chip">+3 more</span></div>
+      <div class="verdict">No clear effect on physician visits</div>
+    </div>
+    <div class="cluster hot">
+      <div class="ic" style="color:var(--accent);margin-bottom:8px"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/><path d="M9 11h.01"/><path d="M15 11h.01"/></svg></div>
+      <h4>Cluster 2: Poor community infrastructure &amp; inequity</h4>
+      <div class="chips"><span class="chip">housing</span><span class="chip">lead exposure</span><span class="chip">incarceration</span><span class="chip">no broadband</span><span class="chip">+1 more</span></div>
+      <div class="verdict">&#9888; Predicted a ~10% slower path to the first cardiologist visit</div>
+    </div>
+  </div>
+
+  <p>The takeaway in one sentence: <b>the neighborhood itself &mdash; not just the patient &mdash; predicted the delay</b>, even after accounting for age, cancer stage and other illnesses.</p>
+
+  <figure class="viz reveal" style="margin-top:36px">
+    <h3>The two neighborhood clusters, across all four outcomes</h3>
+    <div class="sub">Values below 1.00 mean lower odds of a visit, or a slower path to one</div>
+    <div style="overflow-x:auto">
+    <table class="domains">
+      <tr><th>Neighborhood cluster</th><th>Cardiologist<br>within 90 days</th><th>Primary care<br>within 90 days</th><th>Speed to first<br>cardiologist visit</th><th>Speed to first<br>primary care visit</th></tr>
+      <tr>
+        <td><b>Socioeconomic vulnerability</b> &amp; barriers to resources<br><span style="color:var(--ink-faint);font-size:.72rem">8 measures: poverty, education, insurance &amp; more</span></td>
+        <td class="est">0.93<br><span style="color:var(--ink-faint)">(0.73&ndash;1.18)</span></td>
+        <td class="est">1.03<br><span style="color:var(--ink-faint)">(0.81&ndash;1.30)</span></td>
+        <td class="est">1.04<br><span style="color:var(--ink-faint)">(0.92&ndash;1.17)</span></td>
+        <td class="est">1.01<br><span style="color:var(--ink-faint)">(0.91&ndash;1.12)</span></td>
+      </tr>
+      <tr class="sig">
+        <td><b>Poor community infrastructure</b> &amp; inequity<span class="sigtag">significant</span><br><span style="color:var(--ink-faint);font-size:.72rem">5 measures: housing, environment, systemic disadvantage</span></td>
+        <td class="est">0.90<br><span style="color:var(--ink-faint)">(0.73&ndash;1.10)</span></td>
+        <td class="est">1.19<br><span style="color:var(--ink-faint)">(0.97&ndash;1.47)</span></td>
+        <td class="est"><b>0.90</b><br><span style="color:var(--ink-faint)">(0.81&ndash;0.99), P=.03</span></td>
+        <td class="est">1.09<br><span style="color:var(--ink-faint)">(1.00&ndash;1.20), P=.05</span></td>
+      </tr>
+    </table>
+    </div>
+    <figcaption>Tables 4 and 5 of the study. First two columns: adjusted odds ratios. Last two: adjusted hazard ratios, where values below 1.00 mean a slower path to the visit. The one clear signal: worse community infrastructure meant a roughly 10% slower path to a first cardiologist visit &mdash; while the borderline 1.09 for primary care hints those same neighborhoods may lean on primary care instead. Both factor scores had acceptable internal consistency (Cronbach&rsquo;s &alpha; = 0.72).</figcaption>
+  </figure>
+</section>
+
+<div class="divider">&bull;&nbsp;&bull;&nbsp;&bull;</div>
+
+<!-- ============ WHY IT MATTERS ============ -->
+<section class="prose container reveal">
+  <div class="section-label">Why It Matters</div>
+  <h2 class="section">A risk calculator that knows your chart &mdash; but not your bus route</h2>
+  <p>Before heart-straining treatment starts, doctors use risk checklists to decide who needs closer monitoring. Those checklists read the medical chart &mdash; blood pressure, age, heart history. They never ask about the bus route. Our findings suggest one added question could change that:</p>
+
+  <div class="statcallout reveal" style="border-left-color:var(--blue)">
+    <div class="ic" style="color:var(--blue)"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+    <p><b>&ldquo;How hard is it for you to get to appointments and groceries?&rdquo;</b><br>One screening question could flag the patients most likely to fall through the cracks.</p>
+  </div>
+
+  <div class="iconrow reveal">
+    <div class="icard blue">
+      <div class="ic"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6 6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6 6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></svg></div>
+      <b>Proactive referrals</b>
+      <span>Flagged patients get a cardio-oncology referral before problems start &mdash; not after</span>
+    </div>
+    <div class="icard green">
+      <div class="ic"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 8-6 4 6 4V8Z"/></svg></div>
+      <b>Telehealth options</b>
+      <span>Video check-ins when the nearest cardiologist is an hour away</span>
+    </div>
+    <div class="icard gold">
+      <div class="ic"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M3 10h18"/><circle cx="7.5" cy="19" r="1.5"/><circle cx="16.5" cy="19" r="1.5"/></svg></div>
+      <b>Transportation help</b>
+      <span>Ride programs and visit bundling, arranged by oncology social workers</span>
+    </div>
+    <div class="icard">
+      <div class="ic"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></div>
+      <b>Food prescriptions</b>
+      <span>Produce-prescription programs have lowered blood pressure and food insecurity</span>
+    </div>
+  </div>
+
+  <div class="limits reveal">
+    <div class="limcol can">
+      <h4>What this study can say</h4>
+      <ul>
+        <li>Neighborhood conditions were strongly linked to whether and when heart care happened</li>
+        <li>The links held after adjusting for age, cancer stage and other illnesses</li>
+        <li>It fits a larger body of evidence tying neighborhood disadvantage to worse heart outcomes in cancer survivors</li>
+      </ul>
+    </div>
+    <div class="limcol cant">
+      <h4>What it can&rsquo;t say</h4>
+      <ul>
+        <li>It can&rsquo;t prove cause and effect &mdash; it&rsquo;s observational</li>
+        <li>It covered insured women 66+; younger or uninsured patients may face steeper barriers</li>
+        <li>Some heart monitoring inside oncology visits isn&rsquo;t visible in claims data</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section class="container">
+  <figure class="viz quiz reveal">
+    <h3>Could this apply to you or someone you love?</h3>
+    <div class="sub">Three quick questions. No data is stored or sent anywhere &mdash; this runs entirely on your screen.</div>
+    <div class="q">
+      <p>1. Are you (or they) receiving &mdash; or about to receive &mdash; any of these breast cancer treatments: anthracycline chemotherapy (e.g., doxorubicin), HER2-targeted therapy (e.g., trastuzumab/Herceptin), or radiation near the chest?</p>
+      <div class="opts" data-q="1">
+        <button class="opt" data-v="yes">Yes</button>
+        <button class="opt" data-v="unsure">Not sure</button>
+        <button class="opt" data-v="no">No</button>
+      </div>
+    </div>
+    <div class="q">
+      <p>2. Any heart-related history &mdash; high blood pressure, diabetes, heart failure, prior heart attack, or current heart medications?</p>
+      <div class="opts" data-q="2">
+        <button class="opt" data-v="yes">Yes</button>
+        <button class="opt" data-v="unsure">Not sure</button>
+        <button class="opt" data-v="no">No</button>
+      </div>
+    </div>
+    <div class="q">
+      <p>3. Is it hard to reach doctors or fresh food where you live &mdash; long drives, few specialists, limited transit?</p>
+      <div class="opts" data-q="3">
+        <button class="opt" data-v="yes">Yes</button>
+        <button class="opt" data-v="unsure">Somewhat</button>
+        <button class="opt" data-v="no">No</button>
+      </div>
+    </div>
+    <div class="quiz-result" id="quizResult">
+      <h4 id="quizHead"></h4>
+      <p id="quizBody" style="font-size:.9rem;line-height:1.6"></p>
+      <ul id="quizList"></ul>
+      <p class="note">This is an educational tool based on a population-level study &mdash; it is not medical advice and cannot assess your individual risk. Please talk with your care team.</p>
+    </div>
+  </figure>
+</section>
+
+<!-- ============ ACTION SECTION ============ -->
+<section class="container reveal">
+  <div class="section-label">What You Can Do</div>
+  <h2 class="section">Five questions worth asking your cancer team</h2>
+  <div class="checklist">
+    <div class="item"><div class="n"></div><div class="txt"><b>&ldquo;Could my treatment affect my heart?&rdquo;</b><span>Ask specifically whether your regimen includes anthracyclines, HER2-targeted drugs, or chest radiation.</span></div></div>
+    <div class="item"><div class="n"></div><div class="txt"><b>&ldquo;Should I see a cardiologist or a cardio-oncology clinic &mdash; and when?&rdquo;</b><span>Many centers now have clinics dedicated to heart health during cancer treatment. A referral early on is reasonable to request, especially if you have blood pressure, diabetes or heart history.</span></div></div>
+    <div class="item"><div class="n"></div><div class="txt"><b>&ldquo;What heart symptoms should make me call you?&rdquo;</b><span>New shortness of breath, swelling in the legs, unusual fatigue, palpitations or chest discomfort deserve a call &mdash; don&rsquo;t wait for the next scheduled visit.</span></div></div>
+    <div class="item"><div class="n"></div><div class="txt"><b>&ldquo;Can any of this be done closer to home &mdash; or by video?&rdquo;</b><span>If travel is the barrier, ask about telehealth check-ins, local labs, or coordinating heart checks with existing oncology visits.</span></div></div>
+    <div class="item"><div class="n"></div><div class="txt"><b>&ldquo;Is there help with transportation or food?&rdquo;</b><span>Oncology social workers and navigators can often connect you with ride programs, food assistance and other services. You have to ask &mdash; so ask.</span></div></div>
+  </div>
+  <div class="disclaimer"><b>Important:</b> This page summarizes a peer-reviewed research study in plain language for general education. It is not medical advice, and it cannot tell you about your individual situation. Decisions about screening, referrals and treatment should always be made with your own clinicians. The patient stories above are fictional composites created to illustrate the statistics.</div>
+
+  <div class="dlcard reveal">
+    <div class="ic"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></svg></div>
+    <div class="txt">
+      <b>Take this to your next appointment</b>
+      <span>A free one-page handout: the warning signs to watch for, and the five questions to ask your cancer team. Print it or save it to your phone.</span>
+    </div>
+    <a class="dlbtn" href="heart-care-handout.pdf" download>Download the handout (PDF)</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <h5>About the study</h5>
+    <p>Huang P-L, Mysore MM, Barr B, Onukwugha E. <i>Relationship Between Census Tract-Level Social Determinants of Health and Cardiovascular Care among Individuals Diagnosed With Breast Cancer.</i> Clinical Breast Cancer. 2026;26(2):191&ndash;203. Open access: <a href="https://doi.org/10.1016/j.clbc.2025.08.020">doi.org/10.1016/j.clbc.2025.08.020</a></p>
+    <p style="margin-top:10px"><b>In one sentence:</b> Using national cancer-registry data linked to Medicare claims for 2,637 older women, we found that neighborhood conditions &mdash; food access, doctor supply and community infrastructure &mdash; predicted whether and how quickly women received heart care after starting potentially cardiotoxic breast cancer treatment.</p>
+    <h5 style="margin-top:22px">Methods, briefly</h5>
+    <p>Retrospective cohort, SEER-Medicare 2007&ndash;2018, women 66+ with invasive breast cancer who received potentially cardiotoxic treatment within 12 months of diagnosis. Census-tract social determinants from PolicyMap; 21 variables guided by the Healthy People 2030 framework, plus two empirically derived domains from exploratory factor analysis. Logistic regression and cause-specific Cox models adjusted for patient- and tract-level factors. Approved by the University of Maryland Baltimore IRB.</p>
+    <p style="margin-top:22px;color:var(--ink-faint)">&copy; 2026 Pei-Lin Huang &middot; Interactive summary created by the author &middot; <a href="index.html">Back to main site</a></p>
+  </div>
+</footer>
+
+</main>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- scroll reveal ---------- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('vis'); io.unobserve(e.target);} });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* ---------- waffle ---------- */
+  var waffle = document.getElementById('waffle');
+  for(var i=0;i<100;i++){ var d=document.createElement('div'); d.className='cell'; waffle.appendChild(d); }
+  var wIO = new IntersectionObserver(function(entries){
+    if(!entries[0].isIntersecting) return;
+    wIO.disconnect();
+    var cells = waffle.children;
+    for(var i=0;i<100;i++){
+      (function(i){ setTimeout(function(){
+        cells[i].classList.add(i<38 ? 'on' : 'shown');
+      }, i*18); })(i);
+    }
+  },{threshold:.4});
+  wIO.observe(document.getElementById('waffleViz'));
+
+  /* ---------- cohort baseline conditions (Table 1) ---------- */
+  var conds = [
+    ['High blood pressure',90.5],['High cholesterol',89.6],['Taking heart medications',71.2],
+    ['Diabetes',46.5],['Coronary artery disease',42.7],['Smoking history',40.3],
+    ['Obesity',36.1],['Congestive heart failure',32.8],['Chronic kidney disease',28.7],
+    ['Cardiomyopathy',11.9],['Prior heart attack',9.7]
+  ];
+  var condEl = document.getElementById('condChart');
+  conds.forEach(function(c){
+    var r = document.createElement('div'); r.className='condrow';
+    r.innerHTML = '<div class="clab">'+c[0]+'</div><div class="ctrack"><div class="cfill" data-w="'+c[1]+'%"></div></div><div class="cv">'+c[1].toFixed(1)+'%</div>';
+    condEl.appendChild(r);
+  });
+  var condIO = new IntersectionObserver(function(entries){
+    if(!entries[0].isIntersecting) return;
+    condIO.disconnect();
+    condEl.querySelectorAll('.cfill').forEach(function(b,i){
+      setTimeout(function(){ b.style.width = b.getAttribute('data-w'); }, 90*i);
+    });
+  },{threshold:.25});
+  condIO.observe(document.getElementById('cohortViz'));
+
+  /* ---------- dumbbell: visited vs not (Table 1) ---------- */
+  var dumbData = [
+    /* label, saw cardiologist %, did not %, significant */
+    ['High blood pressure',93.7,89.1,true],
+    ['Diabetes',52.9,43.7,true],
+    ['Coronary artery disease',52.8,38.4,true],
+    ['Congestive heart failure',46.2,26.9,true],
+    ['Obesity',42.2,33.5,true],
+    ['Smoking history',39.8,40.5,false],
+    ['Chronic kidney disease',35.9,25.6,true],
+    ['Cardiomyopathy',20.2,8.4,true],
+    ['Prior heart attack',13.8,8.0,true],
+    ['Arrhythmia',8.0,3.0,true]
+  ];
+  var dumbEl = document.getElementById('dumbRows');
+  dumbData.forEach(function(d){
+    var row = document.createElement('div'); row.className='dumbrow';
+    var yes=d[1], no=d[2], sig=d[3];
+    var close = Math.abs(yes-no) < 4;
+    row.innerHTML =
+      '<div class="dlab">'+d[0]+(sig?'':'<br><span class="ns">no real difference</span>')+'</div>'+
+      '<div class="dtrack">'+
+        '<div class="dline'+(sig?' up':'')+'" style="left:'+Math.min(yes,no)+'%;width:0"></div>'+
+        '<div class="ddot no" style="left:0" data-l="calc('+no+'% - 8px)"><span'+(close?' style="top:auto;bottom:-15px"':'')+'>'+no.toFixed(1)+'%</span></div>'+
+        '<div class="ddot yes" style="left:0" data-l="calc('+yes+'% - 8px)"><span>'+yes.toFixed(1)+'%</span></div>'+
+      '</div>';
+    row.querySelector('.dline').setAttribute('data-w', Math.abs(yes-no)+'%');
+    dumbEl.appendChild(row);
+  });
+  var dumbIO = new IntersectionObserver(function(entries){
+    if(!entries[0].isIntersecting) return;
+    dumbIO.disconnect();
+    dumbEl.querySelectorAll('.dumbrow').forEach(function(row,i){
+      setTimeout(function(){
+        row.querySelectorAll('.ddot').forEach(function(dot){ dot.style.left = dot.getAttribute('data-l'); });
+        var line = row.querySelector('.dline'); line.style.width = line.getAttribute('data-w');
+      }, 120*i);
+    });
+  },{threshold:.2});
+  dumbIO.observe(document.getElementById('dumbViz'));
+
+  /* ---------- odds-ratio forest plot, Tables 2 & 3 ---------- */
+  /* scale: OR 1.0 at center (50%). log scale, half-width = log(2.2) */
+  var HW = Math.log(2.2);
+  function pct(or){ return Math.min(48, Math.abs(Math.log(or))/HW*50); }
+
+  var GENERIC_NS = 'No statistically significant effect here — the confidence interval crosses 1.0, so chance can’t be ruled out.';
+  var forest = {
+    cardio: {
+      note:'Of 18 tract-level factors tested against early <b>cardiologist</b> visits, two stood out — food access and primary care supply. That most others showed nothing is itself a finding: the barriers are specific, not a generic “poor neighborhood” effect.',
+      groups:[
+        {name:'Community & social context', items:[
+          {lab:'Racial segregation', con:'most vs. least segregated tracts', or:0.82, ci:'0.59–1.15', sig:false}
+        ]},
+        {name:'Economic stability', items:[
+          {lab:'Unemployment', con:'highest vs. lowest tracts', or:0.81, ci:'0.62–1.07', sig:false},
+          {lab:'Household spending power', con:'least vs. most favorable', or:0.93, ci:'0.61–1.44', sig:false},
+          {lab:'Upward mobility', con:'least vs. most favorable', or:1.02, ci:'0.72–1.45', sig:false}
+        ]},
+        {name:'Education', items:[
+          {lab:'Non-English-speaking households', con:'most vs. fewest', or:0.82, ci:'0.58–1.16', sig:false},
+          {lab:'High-school completion', con:'lowest vs. highest tracts', or:0.79, ci:'0.53–1.19', sig:false}
+        ]},
+        {name:'Food & nutrition', items:[
+          {lab:'Low food access (“food desert”)', con:'vs. tracts with a supermarket nearby', or:0.78, ci:'0.63–0.96', sig:true,
+           tip:'Women living in a food desert had 22% lower odds of seeing a cardiologist within 90 days. Food access likely acts as a marker of broader neighborhood resources — places without supermarkets often lack clinics, pharmacies and transit too.'},
+          {lab:'Households on SNAP (food stamps)', con:'most vs. fewest', or:1.13, ci:'0.78–1.65', sig:false}
+        ]},
+        {name:'Healthcare system', items:[
+          {lab:'Residents without health insurance', con:'most vs. fewest', or:0.97, ci:'0.68–1.37', sig:false,
+           tip:'Notably, even tract-level uninsurance showed no effect — everyone in this study had Medicare. The barriers that did matter were physical and structural, not coverage.'},
+          {lab:'Primary care doctor shortage area', con:'vs. adequately served areas', or:0.66, ci:'0.52–0.84', sig:true,
+           tip:'The strongest neighborhood effect we found: 34% lower odds of an early cardiologist visit. Primary care doctors are the gateway to specialists — where they are scarce, referrals into cardiology are scarcer too.'},
+          {lab:'Few residents with a personal doctor', con:'fewest vs. most', or:1.10, ci:'0.76–1.59', sig:false},
+          {lab:'Poor self-rated community health', con:'worst vs. best tracts', or:1.30, ci:'0.91–1.84', sig:false},
+          {lab:'Out-of-pocket medical spending', con:'least vs. most favorable', or:1.00, ci:'0.70–1.44', sig:false}
+        ]},
+        {name:'Neighborhood & physical environment', items:[
+          {lab:'Lead-exposure risk', con:'high vs. very low', or:1.00, ci:'0.70–1.41', sig:false},
+          {lab:'Scarce affordable housing', con:'least vs. most favorable', or:0.92, ci:'0.65–1.31', sig:false},
+          {lab:'Public-transit commuting', con:'least vs. most favorable', or:1.19, ci:'0.88–1.61', sig:false},
+          {lab:'Incarceration rate', con:'medium vs. low tracts', or:1.11, ci:'0.90–1.37', sig:false},
+          {lab:'No broadband internet', con:'most vs. fewest households', or:1.17, ci:'0.82–1.66', sig:false}
+        ]}
+      ]
+    },
+    pcp: {
+      note:'<b>Primary care</b> looked different. Most factors showed no effect, but two findings are worth a look: food deserts hovered right at the edge of significance (aOR 0.81, P = .05), and women in medium-incarceration tracts were <i>more</i> likely to see a primary care doctor early.',
+      groups:[
+        {name:'Community & social context', items:[
+          {lab:'Racial segregation', con:'most vs. least segregated tracts', or:1.09, ci:'0.79–1.51', sig:false}
+        ]},
+        {name:'Economic stability', items:[
+          {lab:'Unemployment', con:'highest vs. lowest tracts', or:0.97, ci:'0.74–1.26', sig:false},
+          {lab:'Household spending power', con:'least vs. most favorable', or:0.83, ci:'0.55–1.27', sig:false},
+          {lab:'Upward mobility', con:'least vs. most favorable', or:0.95, ci:'0.67–1.35', sig:false}
+        ]},
+        {name:'Education', items:[
+          {lab:'Non-English-speaking households', con:'most vs. fewest', or:0.83, ci:'0.59–1.15', sig:false},
+          {lab:'High-school completion', con:'lowest vs. highest tracts', or:1.33, ci:'0.90–1.97', sig:false}
+        ]},
+        {name:'Food & nutrition', items:[
+          {lab:'Low food access (“food desert”)', con:'vs. tracts with a supermarket nearby', or:0.81, ci:'0.65–1.00', sig:false,
+           tip:'Just at the edge of statistical significance (P = .05): women in food deserts had 19% lower odds of an early primary care visit. Taken with the cardiologist result, food deserts may dampen access to both kinds of doctors.'},
+          {lab:'Households on SNAP (food stamps)', con:'most vs. fewest', or:1.03, ci:'0.71–1.50', sig:false}
+        ]},
+        {name:'Healthcare system', items:[
+          {lab:'Residents without health insurance', con:'most vs. fewest', or:0.80, ci:'0.57–1.12', sig:false},
+          {lab:'Primary care doctor shortage area', con:'vs. adequately served areas', or:1.08, ci:'0.85–1.36', sig:false,
+           tip:'Interesting contrast: doctor-shortage areas strongly reduced cardiologist visits but showed no effect on primary care visits. The shortage designation may matter most at the referral step — getting from a generalist to a specialist.'},
+          {lab:'Few residents with a personal doctor', con:'fewest vs. most', or:1.20, ci:'0.83–1.73', sig:false},
+          {lab:'Poor self-rated community health', con:'worst vs. best tracts', or:1.02, ci:'0.73–1.44', sig:false},
+          {lab:'Out-of-pocket medical spending', con:'least vs. most favorable', or:0.91, ci:'0.64–1.30', sig:false}
+        ]},
+        {name:'Neighborhood & physical environment', items:[
+          {lab:'Lead-exposure risk', con:'high vs. very low', or:1.17, ci:'0.84–1.64', sig:false},
+          {lab:'Scarce affordable housing', con:'least vs. most favorable', or:0.92, ci:'0.65–1.29', sig:false},
+          {lab:'Public-transit commuting', con:'least vs. most favorable', or:1.03, ci:'0.76–1.38', sig:false},
+          {lab:'Incarceration rate', con:'medium vs. low tracts', or:1.25, ci:'1.02–1.54', sig:true, good:true,
+           tip:'A counterintuitive, inverted-U finding: women in medium-incarceration tracts had 25% higher odds of an early primary care visit than those in low-incarceration tracts — while high-incarceration tracts showed no advantage (aOR 0.97). Medium-rate areas are often urban, with clinics physically nearby; at high rates, the burdens of community stress and instability may crowd out that advantage.'},
+          {lab:'No broadband internet', con:'most vs. fewest households', or:1.24, ci:'0.88–1.75', sig:false}
+        ]}
+      ]
+    }
+  };
+
+  var rowsEl = document.getElementById('orRows');
+  var noteEl = document.getElementById('forestNote');
+  function renderForest(key, animate){
+    var data = forest[key];
+    noteEl.innerHTML = data.note;
+    rowsEl.innerHTML = '';
+    data.groups.forEach(function(g){
+      var h = document.createElement('div'); h.className='domain-head'; h.textContent = g.name;
+      rowsEl.appendChild(h);
+      g.items.forEach(function(d){
+        var row = document.createElement('div'); row.className='orrow'+(d.sig?'':' ns'); row.setAttribute('tabindex','0');
+        var lower = d.or < 1;
+        var w = pct(d.or);
+        row.innerHTML =
+          '<div class="lab"><b>'+d.lab+'</b><span class="contrast">'+d.con+'</span></div>'+
+          '<div class="ortrack"><div class="axisline"></div>'+
+          '<div class="orbar '+(lower?'lower':'higher')+'"'+(d.sig&&d.good?' style="background:var(--green)"':'')+' data-w="'+w+'%"></div>'+
+          '<div class="orval" style="'+(lower?('right:calc(50% + '+(w+2)+'%)'):('left:calc(50% + '+(w+2)+'%)'))+'">'+d.or.toFixed(2)+'</div></div>';
+        var tip = document.createElement('div'); tip.className='ortip';
+        tip.innerHTML = '<b>In plain terms:</b> '+(d.tip||GENERIC_NS)+' <span style="color:var(--ink-faint)">(aOR '+d.or.toFixed(2)+', 95% CI '+d.ci+')</span>';
+        row.addEventListener('click', function(){ row.classList.toggle('open'); });
+        row.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();row.classList.toggle('open');} });
+        rowsEl.appendChild(row); rowsEl.appendChild(tip);
+      });
+    });
+    rowsEl.querySelectorAll('.orbar').forEach(function(b,i){
+      if(animate){ setTimeout(function(){ b.style.width = b.getAttribute('data-w'); }, 60*i); }
+      else { b.style.width = b.getAttribute('data-w'); }
+    });
+  }
+  var tabC = document.getElementById('tabCardio'), tabP = document.getElementById('tabPCP');
+  function setTab(key){
+    tabC.classList.toggle('on', key==='cardio'); tabC.setAttribute('aria-selected', key==='cardio');
+    tabP.classList.toggle('on', key==='pcp');    tabP.setAttribute('aria-selected', key==='pcp');
+    renderForest(key, true);
+  }
+  tabC.addEventListener('click', function(){ setTab('cardio'); });
+  tabP.addEventListener('click', function(){ setTab('pcp'); });
+  renderForest('cardio', false);
+  rowsEl.querySelectorAll('.orbar').forEach(function(b){ b.style.width='0'; });
+  var orIO = new IntersectionObserver(function(entries){
+    if(!entries[0].isIntersecting) return;
+    orIO.disconnect();
+    rowsEl.querySelectorAll('.orbar').forEach(function(b,i){
+      setTimeout(function(){ b.style.width = b.getAttribute('data-w'); }, 60*i);
+    });
+  },{threshold:.1});
+  orIO.observe(document.getElementById('orViz'));
+
+  /* ---------- timeline ---------- */
+  var tlIO = new IntersectionObserver(function(entries){
+    if(!entries[0].isIntersecting) return;
+    tlIO.disconnect();
+    document.querySelectorAll('.tl-fill').forEach(function(f,i){
+      setTimeout(function(){ f.style.width = f.getAttribute('data-w'); }, 300*i);
+    });
+  },{threshold:.4});
+  tlIO.observe(document.getElementById('tlViz'));
+
+  /* ---------- two neighborhoods ---------- */
+  var swFood = document.getElementById('swFood'), swHPSA = document.getElementById('swHPSA');
+  var gauge = document.getElementById('gauge'), note = document.getElementById('nbhdNote');
+  function updateNbhd(){
+    var or = 1;
+    if(swFood.checked) or *= 0.78;
+    if(swHPSA.checked) or *= 0.66;
+    var w = 88*or;
+    gauge.style.width = w+'%';
+    gauge.textContent = Math.round(or*100)+'%';
+    gauge.style.background = or===1 ? 'var(--blue)' : (or<0.6 ? 'var(--accent)' : 'var(--gold)');
+    if(or===1){ note.innerHTML = 'This patient lives in a neighborhood with good food access and enough primary care doctors. This is the study’s reference point.'; }
+    else if(swFood.checked && swHPSA.checked){ note.innerHTML = '<b>Both barriers.</b> A patient facing both conditions — like “Ruth” above — faces compounding disadvantages. (The study measured each effect separately; combining them here is an illustration.)'; }
+    else if(swFood.checked){ note.innerHTML = '<b>Food desert.</b> Odds of an early cardiologist visit drop by 22% (aOR 0.78). Researchers think food access acts as a marker of broader neighborhood resources — places without supermarkets often lack clinics, transit and pharmacies too.'; }
+    else { note.innerHTML = '<b>Doctor shortage area.</b> Odds drop by 34% (aOR 0.66) — the strongest effect found. Primary care doctors are often the gateway to specialists; where they are scarce, referrals to cardiology are scarcer too.'; }
+  }
+  swFood.addEventListener('change', updateNbhd);
+  swHPSA.addEventListener('change', updateNbhd);
+
+  /* ---------- quiz ---------- */
+  var answers = {};
+  document.querySelectorAll('.quiz .opts').forEach(function(group){
+    group.querySelectorAll('.opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        group.querySelectorAll('.opt').forEach(function(b){ b.classList.remove('sel'); });
+        btn.classList.add('sel');
+        answers[group.getAttribute('data-q')] = btn.getAttribute('data-v');
+        if(Object.keys(answers).length===3) showQuizResult();
+      });
+    });
+  });
+  function showQuizResult(){
+    var res = document.getElementById('quizResult');
+    var head = document.getElementById('quizHead'), body = document.getElementById('quizBody'), list = document.getElementById('quizList');
+    list.innerHTML='';
+    var flags = ['1','2','3'].filter(function(q){ return answers[q]==='yes'||answers[q]==='unsure'; }).length;
+    var items = [];
+    if(answers['1']!=='no'){
+      items.push('Ask your oncology team to confirm whether your treatment is considered potentially cardiotoxic — and what heart monitoring is planned.');
+    }
+    if(answers['2']!=='no'){
+      items.push('Mention your heart history (or uncertainty about it) explicitly and ask whether a cardiology or cardio-oncology referral makes sense <i>before or soon after</i> treatment starts.');
+    }
+    if(answers['3']!=='no'){
+      items.push('Tell your care team that getting to appointments is hard. Ask about telehealth visits, coordinating heart checks with existing oncology appointments, and transportation assistance programs.');
+    }
+    if(items.length===0){
+      head.textContent = 'Your answers don’t match this study’s risk picture — but stay curious.';
+      body.textContent = 'Based on what you selected, the specific situation in this study (heart-straining treatment plus access barriers) may not apply. Heart health still matters for every cancer survivor, so it’s always reasonable to ask your doctor what follow-up you need.';
+    } else if(flags>=2){
+      head.textContent = 'This research may be especially relevant to you.';
+      body.textContent = 'Several of your answers match the situation we studied — where timely heart care mattered most and was hardest to get. Consider raising these points at your next appointment:';
+    } else {
+      head.textContent = 'Worth a conversation with your care team.';
+      body.textContent = 'Part of your situation overlaps with what we studied. A short conversation can clarify what monitoring, if any, you need:';
+    }
+    items.forEach(function(t){ var li=document.createElement('li'); li.innerHTML=t; list.appendChild(li); });
+    res.style.display='block';
+    res.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+})();
+</script>
+</body>
+</html>

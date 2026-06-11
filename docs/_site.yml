@@ -7,6 +7,8 @@ navbar:
       href: publications.html
     - text: "CV"
       href: cv.html
+    - text: "Research"
+      href: neighborhood-heart-care.html
   right:
     - text: "Contact me"
       href: contact.html
