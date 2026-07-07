@@ -1,0 +1,15 @@
+---
+title: "Research"
+navbar:
+output:
+  html_document:
+    css: style.css
+---
+
+A collection of research dissemination pages summarizing my work for broader audiences.
+
+---
+
+### [The Neighborhood Gap in Heart Care After Breast Cancer](neighborhood-heart-care.html)
+
+How neighborhood socioeconomic disadvantage relates to cardiovascular care among breast cancer survivors. Includes a plain-language summary of the study and a downloadable [patient handout](heart-care-handout.pdf).

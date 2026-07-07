@@ -8,7 +8,9 @@ navbar:
     - text: "CV"
       href: cv.html
     - text: "Research"
-      href: neighborhood-heart-care.html
+      href: research.html
+    - text: "Tools"
+      href: tools.html
   right:
     - text: "Contact me"
       href: contact.html

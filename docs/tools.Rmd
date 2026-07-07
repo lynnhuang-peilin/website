@@ -1,0 +1,15 @@
+---
+title: "Tools"
+navbar:
+output:
+  html_document:
+    css: style.css
+---
+
+Open-source tools I developed for research and data analysis.
+
+---
+
+### [RxNorm](https://lynnhuangpeilin.shinyapps.io/RxNorm/)
+
+A tool for working with RxNorm drug terminology — mapping and standardizing medication codes for pharmacoepidemiologic and health services research. Source code and documentation available on [GitHub](https://github.com/lynnhuang-peilin/RxNorm).
